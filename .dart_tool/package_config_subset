@@ -58,10 +58,18 @@ meta
 2.12
 file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.15.0/
 file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.15.0/lib/
+nested
+2.12
+file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/nested-1.0.0/
+file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/nested-1.0.0/lib/
 path
 3.0
 file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.9.0/
 file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.9.0/lib/
+provider
+2.12
+file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.1.2/
+file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.1.2/lib/
 source_span
 2.18
 file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/source_span-1.10.0/
@@ -94,7 +102,7 @@ vm_service
 3.3
 file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-14.2.5/
 file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-14.2.5/lib/
-dalel
+Dalel
 3.5
 file:///C:/Users/siraj/Desktop/dalel_app/dalel/
 file:///C:/Users/siraj/Desktop/dalel_app/dalel/lib/
