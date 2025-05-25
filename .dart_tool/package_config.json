@@ -194,13 +194,13 @@
       "languageVersion": "3.3"
     },
     {
-      "name": "Dalel",
+      "name": "dalel",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2025-03-12T21:17:28.157777Z",
+  "generated": "2025-03-15T10:42:37.523850Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///C:/Users/siraj/Desktop/everthing/src/flutter/flutter",
