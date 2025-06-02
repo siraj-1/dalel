@@ -146,6 +146,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "smooth_page_indicator",
+      "rootUri": "file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/smooth_page_indicator-1.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "source_span",
       "rootUri": "file:///C:/Users/siraj/AppData/Local/Pub/Cache/hosted/pub.dev/source_span-1.10.0",
       "packageUri": "lib/",
@@ -200,7 +206,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2025-03-15T10:42:37.523850Z",
+  "generated": "2025-06-02T18:38:19.964411Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///C:/Users/siraj/Desktop/everthing/src/flutter/flutter",

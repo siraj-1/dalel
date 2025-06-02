@@ -1,0 +1,23 @@
+import 'package:dalel/core/utils/app_assets.dart';
+import 'package:dalel/core/utils/app_strings.dart';
+import 'package:flutter/material.dart';
+
+class OnBordingWidgetBody extends StatelessWidget {
+  const OnBordingWidgetBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: PageView.builder(
+        itemCount: 3,
+            itemBuilder: (context, index) {
+              return Column(
+                  children: [
+                    Image.asset(Assets.imagesOnbording1)
+                  ],
+              );
+            } ,
+      ),
+    );
+  }
+}
