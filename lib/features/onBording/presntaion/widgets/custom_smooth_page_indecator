@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+class CustomSmoothPageIndecator extends StatelessWidget {
+  final PageController controller;
+  const CustomSmoothPageIndecator({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return SmoothPageIndicator(
+      controller: controller,
+      count: 3,
+      effect: const ExpandingDotsEffect(
+         // Adjust as needed
+        dotHeight: 7,
+        dotWidth: 23,
+      ),
+    );
+  }
+}

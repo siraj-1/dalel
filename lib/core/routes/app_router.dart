@@ -9,6 +9,6 @@ final GoRouter router = GoRouter(routes: [
   ),
   GoRoute(
     path: "/onbording",
-    builder: (context, State) => const OnBording(),
+    builder: (context, State) => OnBording(),
   )
 ]);
