@@ -1,5 +1,5 @@
-import 'package:dalel/core/utils/app_assets.dart';
 import 'package:dalel/core/utils/app_text_styles.dart';
+import 'package:dalel/features/onBording/data/on_boardign_modal.dart';
 import 'package:dalel/features/onBording/presntaion/widgets/custom_smooth_page_indecator';
 import 'package:flutter/widgets.dart';
 
@@ -12,19 +12,19 @@ class OnBordingWidgetBody extends StatelessWidget {
     return SizedBox(
       height: 500,
       child: PageView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         controller: _controller,
-        itemCount: 3,
+        itemCount: OnBoardignData.length,
         itemBuilder: (context, index) {
           return Column(
             children: [
               Container(
                 height: 290,
                 width: 343,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                      Assets.imagesOnbording1,
+                      OnBoardignData[index].imagePath,
                     ),
                     fit: BoxFit.fill,
                   ),
@@ -35,7 +35,7 @@ class OnBordingWidgetBody extends StatelessWidget {
                   controller: _controller), // Fixed parameter passing
               const SizedBox(height: 32),
               Text(
-                "Explore The history with Dalel in a smart way",
+                OnBoardignData[index].title,
                 style: CustomTextStyles.poppins500style24
                     .copyWith(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
@@ -43,8 +43,8 @@ class OnBordingWidgetBody extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 16),
-              const Text(
-                "Explore The history with Dalel in a smart way",
+              Text(
+                OnBoardignData[index].subtitle,
                 style: CustomTextStyles.poppins300style16,
                 textAlign: TextAlign.center,
                 maxLines: 2,
