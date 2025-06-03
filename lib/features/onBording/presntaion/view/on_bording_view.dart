@@ -1,7 +1,7 @@
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/widgets/custom_btn.dart';
-import 'package:dalel/core/widgets/custom_nav_bar.dart';
-import 'package:dalel/features/onBording/presntaion/widgets/on_bording_widget_body';
+import 'package:dalel/features/onBording/presntaion/widgets/custom_nav_bar.dart';
+import 'package:dalel/features/onBording/presntaion/widgets/onBoardingWidgetBody.dart';
 import 'package:flutter/material.dart';
 
 class OnBording extends StatefulWidget {
@@ -18,12 +18,13 @@ class _OnBordingState extends State<OnBording> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(children: [
+          child: ListView(children: [
             const SizedBox(
               height: 40,
             ),
             const CustomNavBar(),
             OnBordingWidgetBody(),
+            SizedBox(height: 88),
             const CustomBtn(
               text: AppStrings.next,
             ),
