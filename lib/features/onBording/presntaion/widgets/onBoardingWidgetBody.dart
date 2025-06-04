@@ -4,8 +4,14 @@ import 'package:dalel/features/onBording/presntaion/widgets/custom_smooth_page_i
 import 'package:flutter/widgets.dart';
 
 class OnBordingWidgetBody extends StatelessWidget {
-  OnBordingWidgetBody({super.key});
-  final PageController _controller = PageController();
+  const OnBordingWidgetBody({
+    super.key,
+    required this.controller,
+    this.onPageChangged,
+  });
+
+  final PageController controller;
+  final Function(int)? onPageChangged;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +19,10 @@ class OnBordingWidgetBody extends StatelessWidget {
       height: 500,
       child: PageView.builder(
         physics: const BouncingScrollPhysics(),
-        controller: _controller,
-        itemCount: OnBoardignData.length,
+        controller: controller,
+        itemCount: onBoardignData.length,
+        onPageChanged:
+            onPageChangged, // This line was missing — needed for `onPageChangged` to work
         itemBuilder: (context, index) {
           return Column(
             children: [
@@ -23,28 +31,26 @@ class OnBordingWidgetBody extends StatelessWidget {
                 width: 343,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(
-                      OnBoardignData[index].imagePath,
-                    ),
+                    image: AssetImage(onBoardignData[index].imagePath),
                     fit: BoxFit.fill,
                   ),
                 ),
               ),
               const SizedBox(height: 24),
-              CustomSmoothPageIndicator(
-                  controller: _controller), // Fixed parameter passing
+              CustomSmoothPageIndicator(controller: controller),
               const SizedBox(height: 32),
               Text(
-                OnBoardignData[index].title,
-                style: CustomTextStyles.poppins500style24
-                    .copyWith(fontWeight: FontWeight.bold),
+                onBoardignData[index].title,
+                style: CustomTextStyles.poppins500style24.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 16),
               Text(
-                OnBoardignData[index].subtitle,
+                onBoardignData[index].subtitle,
                 style: CustomTextStyles.poppins300style16,
                 textAlign: TextAlign.center,
                 maxLines: 2,

@@ -9,7 +9,7 @@ class OnBoardignModal {
       {required this.imagePath, required this.title, required this.subtitle});
 }
 
-List<OnBoardignModal> OnBoardignData = [
+List<OnBoardignModal> onBoardignData = [
   OnBoardignModal(
       imagePath: Assets.imagesOnbording1,
       title: "Explore The history with Dalel in a smart way",
