@@ -3,6 +3,7 @@ import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/utils/app_text_styles.dart';
 import 'package:dalel/core/widgets/custom_btn.dart';
 import 'package:dalel/features/onBording/data/on_boardign_modal.dart';
+import 'package:dalel/features/onBording/presntaion/view/functions/on_boarding.dart';
 import 'package:flutter/material.dart';
 
 class GetButton extends StatelessWidget {
@@ -18,6 +19,7 @@ class GetButton extends StatelessWidget {
           CustomBtn(
             text: AppStrings.createAccount,
             onPressed: () {
+              isOnBoardingVisited();
               customReplacementNavigate(context, "/signUp");
             },
           ),
@@ -27,6 +29,7 @@ class GetButton extends StatelessWidget {
                 style: CustomTextStyles.poppins300style16
                     .copyWith(fontWeight: FontWeight.w400)),
             onTap: () {
+              isOnBoardingVisited();
               customReplacementNavigate(context, "/signIn");
             },
           )

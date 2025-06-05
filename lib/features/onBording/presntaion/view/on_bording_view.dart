@@ -1,4 +1,5 @@
 import 'package:dalel/core/functions/CoustomNavigation.dart';
+import 'package:dalel/features/onBording/presntaion/view/functions/on_boarding.dart';
 import 'package:dalel/features/onBording/presntaion/widgets/custom_nav_bar.dart';
 import 'package:dalel/features/onBording/presntaion/widgets/get_buttons.dart';
 import 'package:dalel/features/onBording/presntaion/widgets/onBoardingWidgetBody.dart';
@@ -32,6 +33,7 @@ class _OnBordingState extends State<OnBording> {
               const SizedBox(height: 40),
               CustomNavBar(
                 ontap: () {
+                  isOnBoardingVisited();
                   customNavigation(context, "/signUp");
                 },
               ),
