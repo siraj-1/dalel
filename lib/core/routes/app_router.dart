@@ -15,7 +15,7 @@ final GoRouter router = GoRouter(routes: [
   ),
   GoRoute(
     path: "/signUp",
-    builder: (context, State) => signUpPageview(),
+    builder: (context, State) => SignUpPageview(),
   ),
   GoRoute(
     path: "/signIn",
