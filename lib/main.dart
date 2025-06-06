@@ -1,10 +1,13 @@
 import 'package:dalel/core/routes/app_router.dart';
 import 'package:dalel/core/services/service_locator.dart';
 import 'package:dalel/core/utils/app_colors.dart';
+import 'package:dalel/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await setupServiceLocator(); // await this
   runApp(const Dalel());
 }
