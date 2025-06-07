@@ -2,15 +2,23 @@ import 'package:dalel/core/utils/app_colors.dart';
 import 'package:dalel/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextFiled extends StatelessWidget {
-  const CustomTextFiled({super.key, required this.labelText});
+class CustomTextFormFiled extends StatelessWidget {
+  CustomTextFormFiled(
+      {super.key,
+      required this.labelText,
+      this.onChanged,
+      this.onFieldSubmitted});
   final String labelText;
+  void Function(String)? onChanged;
+  void Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 8, right: 8, top: 24),
-      child: TextField(
+      child: TextFormField(
+        onChanged: onChanged,
+        onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
           labelText: labelText,
           labelStyle: CustomTextStyles.pacifico500style18,
