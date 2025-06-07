@@ -1,5 +1,7 @@
 import 'package:dalel/core/utils/app_colors.dart';
+import 'package:dalel/features/auth/presintaion/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomCheckBox extends StatefulWidget {
   const CustomCheckBox({super.key});
@@ -19,6 +21,8 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
       onChanged: (newValue) {
         setState(() {
           value = newValue!;
+          BlocProvider.of<AuthCubit>(context)
+              .updateTermsAndConditionCeckBox(newvalue: newValue);
         });
       },
     );

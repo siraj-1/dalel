@@ -1,3 +1,4 @@
+import 'package:dalel/core/utils/app_colors.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/widgets/custom_btn.dart';
 import 'package:dalel/features/auth/presintaion/auth_cubit/auth_cubit.dart';
@@ -15,32 +16,33 @@ class CustomSignForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {},
         builder: (context, state) {
+          AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
           return Form(
+            key: authCubit.signupFormKey,
             child: Column(
               children: [
                 CustomTextFormFiled(
                   labelText: AppStrings.fristName,
                   onChanged: (fristName) {
-                    BlocProvider.of<AuthCubit>(context).fristName = fristName;
+                    authCubit.fristName = fristName;
                   },
                 ),
                 CustomTextFormFiled(
                   labelText: AppStrings.lastName,
                   onChanged: (lastName) {
-                    BlocProvider.of<AuthCubit>(context).lastName = lastName;
+                    authCubit.lastName = lastName;
                   },
                 ),
                 CustomTextFormFiled(
                   labelText: AppStrings.emailAddress,
                   onChanged: (emailAddress) {
-                    BlocProvider.of<AuthCubit>(context).emailAddress =
-                        emailAddress;
+                    authCubit.emailAddress = emailAddress;
                   },
                 ),
                 CustomTextFormFiled(
                   labelText: AppStrings.password,
                   onChanged: (password) {
-                    BlocProvider.of<AuthCubit>(context).password = password;
+                    authCubit.password = password;
                   },
                 ),
                 const TermsAndconfditions(),
@@ -48,11 +50,17 @@ class CustomSignForm extends StatelessWidget {
                   height: 88,
                 ),
                 CustomBtn(
-                  onPressed: () {
-                    BlocProvider.of<AuthCubit>(context)
-                        .signUpWithEmailAndPassword();
-                  },
                   text: AppStrings.signUp,
+                  color: authCubit.termsAndConditionCeckBoxValue == false
+                      ? AppColors.grey
+                      : null,
+                  onPressed: () {
+                    if (authCubit.termsAndConditionCeckBoxValue == true) {
+                      if (authCubit.signupFormKey.currentState!.validate()) {
+                        authCubit.signUpWithEmailAndPassword();
+                      }
+                    }
+                  },
                 ),
               ],
             ),
