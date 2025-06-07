@@ -4,6 +4,7 @@ import 'package:dalel/core/widgets/custom_btn.dart';
 import 'package:dalel/features/auth/presintaion/auth_cubit/auth_cubit.dart';
 import 'package:dalel/features/auth/presintaion/auth_cubit/cubit/auth_state.dart';
 import 'package:dalel/features/auth/presintaion/widgets/custom_widget_filed.dart';
+import 'package:dalel/features/auth/presintaion/widgets/pass_visibilty.dart';
 import 'package:dalel/features/auth/presintaion/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,12 +40,7 @@ class CustomSignForm extends StatelessWidget {
                     authCubit.emailAddress = emailAddress;
                   },
                 ),
-                CustomTextFormFiled(
-                  labelText: AppStrings.password,
-                  onChanged: (password) {
-                    authCubit.password = password;
-                  },
-                ),
+                const PassInput(labelText: AppStrings.password),
                 const TermsAndconfditions(),
                 const SizedBox(
                   height: 88,

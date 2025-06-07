@@ -10,6 +10,7 @@ class AuthCubit extends Cubit<AuthState> {
   String? emailAddress;
   String? password;
   bool? termsAndConditionCeckBoxValue = false;
+  bool? passVisibilty = false;
   GlobalKey<FormState> signupFormKey = GlobalKey();
   signUpWithEmailAndPassword() async {
     try {
@@ -33,5 +34,10 @@ class AuthCubit extends Cubit<AuthState> {
   updateTermsAndConditionCeckBox({required newvalue}) {
     termsAndConditionCeckBoxValue = newvalue;
     emit(TermsAndconfditionsUpdateState());
+  }
+
+  updatePassVisibilty({required visibile}) {
+    passVisibilty = visibile;
+    emit(PassVisibiltyUpdateState());
   }
 }
