@@ -21,6 +21,9 @@ class PassInput extends StatelessWidget {
 
           return TextFormField(
             obscureText: !isVisible,
+            onChanged: (value) {
+              cubit.password = value;
+            },
             decoration: InputDecoration(
               suffixIcon: IconButton(
                 onPressed: () {

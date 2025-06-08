@@ -1,3 +1,4 @@
+import 'package:dalel/core/functions/CoustomNavigation.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/features/auth/presintaion/widgets/custom_signup_filed.dart';
 import 'package:dalel/features/auth/presintaion/widgets/have_accout_widget.dart';
@@ -9,19 +10,22 @@ class SignUpPageview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(child: SizedBox(height: 152)),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(child: SizedBox(height: 152)),
+            const SliverToBoxAdapter(
                 child: WelcomeTextWidget(text: AppStrings.welcome)),
-            SliverToBoxAdapter(child: SizedBox(height: 16)),
-            SliverToBoxAdapter(child: CustomSignForm()),
-            SliverToBoxAdapter(child: SizedBox(height: 40)),
+            const SliverToBoxAdapter(child: SizedBox(height: 16)),
+            const SliverToBoxAdapter(child: CustomSignForm()),
+            const SliverToBoxAdapter(child: SizedBox(height: 40)),
             SliverToBoxAdapter(
               child: HaveAnAcounte(
+                ontap: () {
+                  customReplacementNavigate(context, 'signIn');
+                },
                 text1: AppStrings.alreadyHaveAnAccount,
                 text2: AppStrings.signIn,
               ),
