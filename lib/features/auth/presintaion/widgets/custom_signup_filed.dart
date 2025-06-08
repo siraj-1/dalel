@@ -18,10 +18,10 @@ class CustomSignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(listener: (context, state) {
       if (state is SignUpSuccessState) {
-        showToast("Acount is Created Successfuly");
-        customReplacementNavigate(context, '/home');
-      } else if (state is SignUpFailureState) {
-        showToast(state.errMessage);
+        showToast("Account is created successfully");
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          customReplacementNavigate(context, '/home');
+        });
       }
     }, builder: (context, state) {
       AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
@@ -47,7 +47,12 @@ class CustomSignUpForm extends StatelessWidget {
                 authCubit.emailAddress = emailAddress;
               },
             ),
-            const PassInput(labelText: AppStrings.password),
+            PassInput(
+              labelText: AppStrings.password,
+              onChanged: (value) {
+                authCubit.password = value;
+              },
+            ),
             const TermsAndconfditions(),
             const SizedBox(height: 88),
             state is SignUpLoadingState

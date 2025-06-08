@@ -7,8 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PassInput extends StatelessWidget {
-  const PassInput({super.key, required this.labelText});
+  const PassInput({
+    super.key,
+    required this.labelText,
+    required this.onChanged,
+  });
+
   final String labelText;
+  final ValueChanged<String> onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +27,7 @@ class PassInput extends StatelessWidget {
 
           return TextFormField(
             obscureText: !isVisible,
-            onChanged: (value) {
-              cubit.password = value;
-            },
+            onChanged: onChanged,
             decoration: InputDecoration(
               suffixIcon: IconButton(
                 onPressed: () {

@@ -18,7 +18,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       emit(SignUpLoadingState());
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailAddress!, password: password!);
+          email: emailAddress!.trim(), password: password!.trim());
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -45,19 +45,27 @@ class AuthCubit extends Cubit<AuthState> {
 
   signInWithEmaiilAndPass() async {
     try {
-      emit(SignInLoadingState());
+      emit(SignInLoadingState()); // Use SignInLoadingState if you have one
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailAddress!, password: password!);
+        email: emailAddress!.trim(),
+        password: password!.trim(),
+      );
       emit(SignInSuccessState());
     } on FirebaseAuthException catch (e) {
+      String errorMessage;
       if (e.code == 'user-not-found') {
-        emit(SignInFailureState(errMessage: 'No user found for that email.'));
+        errorMessage = 'No account found with this email.';
       } else if (e.code == 'wrong-password') {
-        emit(SignInFailureState(
-            errMessage: 'Wrong password provided for that user.'));
+        errorMessage = 'Incorrect password. Please try again.';
+      } else if (e.code == 'invalid-email') {
+        errorMessage = 'Invalid email address.';
+      } else {
+        errorMessage = e.message ?? 'Something went wrong.';
       }
+
+      emit(SignInFailureState(errMessage: errorMessage));
     } catch (e) {
-      emit(SignInFailureState(errMessage: e.toString()));
+      emit(SignInFailureState(errMessage: 'Unexpected error: $e'));
     }
   }
 }
