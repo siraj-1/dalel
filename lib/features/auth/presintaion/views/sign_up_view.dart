@@ -19,12 +19,12 @@ class SignUpPageview extends StatelessWidget {
             const SliverToBoxAdapter(
                 child: WelcomeTextWidget(text: AppStrings.welcome)),
             const SliverToBoxAdapter(child: SizedBox(height: 16)),
-            const SliverToBoxAdapter(child: CustomSignForm()),
+            const SliverToBoxAdapter(child: CustomSignUpForm()),
             const SliverToBoxAdapter(child: SizedBox(height: 40)),
             SliverToBoxAdapter(
               child: HaveAnAcounte(
                 ontap: () {
-                  customReplacementNavigate(context, 'signIn');
+                  customReplacementNavigate(context, '/signIn');
                 },
                 text1: AppStrings.alreadyHaveAnAccount,
                 text2: AppStrings.signIn,

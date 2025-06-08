@@ -12,6 +12,8 @@ class AuthCubit extends Cubit<AuthState> {
   bool? termsAndConditionCeckBoxValue = false;
   bool? passVisibilty;
   GlobalKey<FormState> signupFormKey = GlobalKey();
+  GlobalKey<FormState> signinFormKey = GlobalKey();
+
   signUpWithEmailAndPassword() async {
     try {
       emit(SignUpLoadingState());
@@ -39,5 +41,23 @@ class AuthCubit extends Cubit<AuthState> {
   updatePassVisibilty({required visibile}) {
     passVisibilty = visibile;
     emit(PassVisibiltyUpdateState());
+  }
+
+  signInWithEmaiilAndPass() async {
+    try {
+      emit(SignInLoadingState());
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailAddress!, password: password!);
+      emit(SignInSuccessState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emit(SignInFailureState(errMessage: 'No user found for that email.'));
+      } else if (e.code == 'wrong-password') {
+        emit(SignInFailureState(
+            errMessage: 'Wrong password provided for that user.'));
+      }
+    } catch (e) {
+      emit(SignInFailureState(errMessage: e.toString()));
+    }
   }
 }
