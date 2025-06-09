@@ -8,6 +8,7 @@ import 'package:dalel/features/auth/presintaion/auth_cubit/cubit/auth_state.dart
 import 'package:dalel/features/auth/presintaion/widgets/custom_widget_filed.dart';
 import 'package:dalel/features/auth/presintaion/widgets/orget_pass_widget.dart';
 import 'package:dalel/features/auth/presintaion/widgets/pass_visibilty.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,10 +19,12 @@ class CustomSignInForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(listener: (context, state) {
       if (state is SignInSuccessState) {
-        showToast("Welcome Back!");
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          customReplacementNavigate(context, '/home');
-        });
+        // showToast("Welcome Back!");
+        FirebaseAuth.instance.currentUser!.emailVerified
+            ? customReplacementNavigate(context, '/home')
+            : showToast("please check your accouunt");
+      } else if (state is SignInFailureState) {
+        showToast(state.errMessage);
       }
     }, builder: (context, state) {
       AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);

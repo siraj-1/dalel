@@ -1,3 +1,4 @@
+import 'package:dalel/core/functions/custom_toast.dart';
 import 'package:dalel/features/auth/presintaion/auth_cubit/cubit/auth_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,18 +20,30 @@ class AuthCubit extends Cubit<AuthState> {
       emit(SignUpLoadingState());
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailAddress!.trim(), password: password!.trim());
+      veriyEmail();
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         emit(SignUpFailureState(
             errMessage: 'The password provided is too weak.'));
+        showToast("The password provided is too weak.");
       } else if (e.code == 'email-already-in-use') {
         emit(SignUpFailureState(
             errMessage: 'The account already exists for that email.'));
+        showToast("The account already exists for that email.");
+      } else if (e.code == 'invalid-email') {
+        emit(SignUpFailureState(errMessage: 'The emmail is invaild.'));
+        showToast("The emmail is invaild.");
+      } else {
+        emit(SignInFailureState(errMessage: e.code));
       }
     } catch (e) {
       emit(SignUpFailureState(errMessage: e.toString()));
     }
+  }
+
+  veriyEmail() async {
+    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
 
   updateTermsAndConditionCeckBox({required newvalue}) {
@@ -45,27 +58,24 @@ class AuthCubit extends Cubit<AuthState> {
 
   signInWithEmaiilAndPass() async {
     try {
-      emit(SignInLoadingState()); // Use SignInLoadingState if you have one
+      emit(SignInLoadingState());
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailAddress!.trim(),
-        password: password!.trim(),
-      );
+          email: emailAddress!, password: password!);
       emit(SignInSuccessState());
     } on FirebaseAuthException catch (e) {
-      String errorMessage;
       if (e.code == 'user-not-found') {
-        errorMessage = 'No account found with this email.';
+        emit(SignInFailureState(errMessage: 'No user found for that email.'));
+        showToast("No user found for that email.");
       } else if (e.code == 'wrong-password') {
-        errorMessage = 'Incorrect password. Please try again.';
-      } else if (e.code == 'invalid-email') {
-        errorMessage = 'Invalid email address.';
+        emit(SignInFailureState(
+            errMessage: 'Wrong password provided for that user.'));
+        showToast("Wrong password provided for that user.");
       } else {
-        errorMessage = e.message ?? 'Something went wrong.';
+        emit(SignInFailureState(errMessage: "thhe email is invaled"));
+        showToast("The emmail is invaild.");
       }
-
-      emit(SignInFailureState(errMessage: errorMessage));
     } catch (e) {
-      emit(SignInFailureState(errMessage: 'Unexpected error: $e'));
+      emit(SignInFailureState(errMessage: e.toString()));
     }
   }
 }
