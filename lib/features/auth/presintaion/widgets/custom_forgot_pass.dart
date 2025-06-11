@@ -6,54 +6,42 @@ import 'package:dalel/core/widgets/custom_btn.dart';
 import 'package:dalel/features/auth/presintaion/auth_cubit/auth_cubit.dart';
 import 'package:dalel/features/auth/presintaion/auth_cubit/cubit/auth_state.dart';
 import 'package:dalel/features/auth/presintaion/widgets/custom_widget_filed.dart';
-import 'package:dalel/features/auth/presintaion/widgets/orget_pass_widget.dart';
-import 'package:dalel/features/auth/presintaion/widgets/pass_visibilty.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomSignInForm extends StatelessWidget {
-  const CustomSignInForm({super.key});
+class CustomForgetPassForm extends StatelessWidget {
+  const CustomForgetPassForm({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(listener: (context, state) {
-      if (state is SignInSuccessState) {
-        // showToast("Welcome Back!");
-        FirebaseAuth.instance.currentUser!.emailVerified
-            ? customReplacementNavigate(context, '/homeNavBar')
-            : showToast("please check your accouunt");
-      } else if (state is SignInFailureState) {
+      if (state is ForgotPassSuccessState) {
+        showToast("check your Email to reset");
+        customReplacementNavigate(context, "/sginIn");
+      } else if (state is ForgotPassFailureState) {
         showToast(state.errMessage);
       }
     }, builder: (context, state) {
       AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
       return Form(
-        key: authCubit.signinFormKey,
+        key: authCubit.forgotpassFormKey,
         child: Column(
           children: [
             CustomTextFormFiled(
               labelText: AppStrings.emailAddress,
               onChanged: (emailAddress) {
-                authCubit.emailAddress = emailAddress;
+                authCubit.emailAddress = emailAddress.trim();
               },
             ),
-            PassInput(
-              labelText: AppStrings.password,
-              onChanged: (value) {
-                authCubit.password = value;
-              },
-            ),
-            const SizedBox(height: 10),
-            const ForgotPassword(),
-            const SizedBox(height: 102),
-            state is SignInLoadingState
+            const SizedBox(height: 129),
+            state is ForgotPassLoadingState
                 ? CircularProgressIndicator(color: AppColors.primaryColor)
                 : CustomBtn(
-                    text: AppStrings.signIn,
+                    text: AppStrings.sendResetPasswordLink,
                     onPressed: () async {
-                      if (authCubit.signinFormKey.currentState!.validate()) {
-                        await authCubit.signInWithEmaiilAndPass();
+                      if (authCubit.forgotpassFormKey.currentState!
+                          .validate()) {
+                        await authCubit.resetPassWithLink();
                       }
                     },
                   ),

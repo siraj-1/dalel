@@ -19,11 +19,13 @@ class _SplashViewState extends State<SplashView> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       bool isOnBoardingVisited =
           getIt<CacheHelper>().getData(key: "isOnBoardingVisited") ?? false;
+      final user = FirebaseAuth.instance.currentUser;
+
       if (isOnBoardingVisited == true) {
-        FirebaseAuth.instance.currentUser == null
+        user == null
             ? delayedNavigate(context, "/signIn")
-            : FirebaseAuth.instance.currentUser!.emailVerified == true
-                ? delayedNavigate(context, "/home")
+            : user.emailVerified == true
+                ? delayedNavigate(context, "/homeNavBar")
                 : delayedNavigate(context, "/signIn");
       } else {
         delayedNavigate(context, "/onbording");
