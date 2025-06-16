@@ -1,10 +1,10 @@
 import 'package:dalel/core/cache/cache_helper.dart';
-import 'package:dalel/core/functions/coustomNavigation.dart';
 import 'package:dalel/core/services/service_locator.dart';
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/utils/app_text_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -16,22 +16,28 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      bool isOnBoardingVisited =
+      final bool isOnBoardingVisited =
           getIt<CacheHelper>().getData(key: "isOnBoardingVisited") ?? false;
       final user = FirebaseAuth.instance.currentUser;
 
-      if (isOnBoardingVisited == true) {
-        user == null
-            ? delayedNavigate(context, "/signIn")
-            : user.emailVerified == true
-                ? delayedNavigate(context, "/homeNavBar")
-                : delayedNavigate(context, "/signIn");
+      if (isOnBoardingVisited) {
+        if (user!.emailVerified) {
+          _delayedNavigate("/homeNavBar");
+        } else {
+          _delayedNavigate("/signIn");
+        }
       } else {
-        delayedNavigate(context, "/onbording");
+        _delayedNavigate("/onbording");
       }
     });
-    super.initState();
+  }
+
+  void _delayedNavigate(String path) {
+    Future.delayed(const Duration(seconds: 2), () {
+      if (mounted) context.go(path);
+    });
   }
 
   @override
@@ -45,10 +51,4 @@ class _SplashViewState extends State<SplashView> {
       ),
     );
   }
-}
-
-void delayedNavigate(context, path) {
-  Future.delayed(const Duration(seconds: 2), () {
-    customReplacementNavigate(context, path);
-  });
 }

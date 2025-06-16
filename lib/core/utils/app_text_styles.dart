@@ -44,6 +44,12 @@ abstract class CustomTextStyles {
     color: AppColors.grey,
     fontFamily: "Poppins",
   );
+  static final poppins500style16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.deepBrown,
+    fontFamily: "Poppins",
+  );
   static final poppins600style12 = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w600,

@@ -9,9 +9,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 // ignore: must_be_immutable
-class HomeNavBarWidget extends StatelessWidget {
-  HomeNavBarWidget({super.key});
-  PersistentTabController _controller = PersistentTabController();
+class HomeNavBarWidget extends StatefulWidget {
+  const HomeNavBarWidget({super.key});
+
+  @override
+  State<HomeNavBarWidget> createState() => _HomeNavBarWidgetState();
+}
+
+class _HomeNavBarWidgetState extends State<HomeNavBarWidget> {
+  final PersistentTabController _controller = PersistentTabController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +47,27 @@ List<Widget> _buildScreens() {
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
-        icon: SvgPicture.asset("assets/images/home.svg")),
+        icon: SvgPicture.asset(Assets.homeSvg),
+        inactiveIcon: SvgPicture.asset(Assets.homeNonSvg)),
     PersistentBottomNavBarItem(
-      icon: const Icon(Icons.shopping_bag),
-    ),
+        icon: SvgPicture.asset(Assets.searchSvg),
+        inactiveIcon: SvgPicture.asset(Assets.searchNonSvg)),
     PersistentBottomNavBarItem(
-      icon: const Icon(Icons.portable_wifi_off_outlined),
-    ),
+        icon: SvgPicture.asset(Assets.profileActive),
+        inactiveIcon: SvgPicture.asset(Assets.profile)),
     PersistentBottomNavBarItem(
-      icon: const Icon(Icons.email),
-    )
+        icon: SvgPicture.asset(Assets.maskActiveSvg),
+        inactiveIcon: SvgPicture.asset(Assets.maskSvg)),
   ];
+}
+
+class AppAssets {
+  static const String homeSvg = 'assets/images/home.svg';
+  static const String homeNonSvg = 'assets/images/home-non.svg';
+  static const String searchSvg = 'assets/images/search.svg';
+  static const String searchNonSvg = 'assets/images/search-non.svg';
+  static const String maskSvg = 'assets/images/Mask.svg';
+  static const String maskActiveSvg = 'assets/images/Mask-active.svg';
+
+  // Add more as needed
 }

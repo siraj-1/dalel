@@ -34,5 +34,7 @@ final GoRouter router = GoRouter(routes: [
         create: (context) => AuthCubit(), child: const ForgotPassViwe()),
   ),
   GoRoute(path: "/home", builder: (context, state) => const HomeView()),
-  GoRoute(path: "/homeNavBar", builder: (context, state) => HomeNavBarWidget()),
+  GoRoute(
+      path: "/homeNavBar",
+      builder: (context, state) => const HomeNavBarWidget()),
 ]);
