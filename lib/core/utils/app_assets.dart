@@ -38,4 +38,5 @@ class Assets {
   static const String frame27 = 'assets/images/Frame27.png';
   static const String profileActive = 'assets/images/person.svg';
   static const String profile = 'assets/images/person-non.svg';
+  static const String saladin = 'assets/images/saladin.png';
 }

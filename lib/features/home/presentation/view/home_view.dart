@@ -1,8 +1,7 @@
-import 'package:dalel/core/utils/app_strings.dart';
-
-import 'package:dalel/core/widgets/custom_header_text.dart';
-import 'package:dalel/features/home/presentation/widgets/custom_home_viw_app_bar.dart';
-import 'package:dalel/features/home/presentation/widgets/historical_periods_widgets.dart';
+import 'package:dalel/features/home/presentation/widgets/home_secitons.dart/historical_souvenirs_section.dart';
+import 'package:dalel/features/home/presentation/widgets/home_secitons.dart/home__app_bar_section.dart';
+import 'package:dalel/features/home/presentation/widgets/home_secitons.dart/home_historical_character_section.dart';
+import 'package:dalel/features/home/presentation/widgets/home_secitons.dart/home_historical_periods_section.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -15,18 +14,10 @@ class HomeView extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 15.0),
       child: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(child: SizedBox(height: 72)),
-          SliverToBoxAdapter(
-            child: CustomHomeViewAppBar(),
-          ),
-          SliverToBoxAdapter(child: SizedBox(height: 34)),
-          SliverToBoxAdapter(
-            child: CustomHeaderText(text: AppStrings.historicalPeriods),
-          ),
-          SliverToBoxAdapter(child: SizedBox(height: 16)),
-          SliverToBoxAdapter(
-            child: HistoricalPeriods(),
-          )
+          SliverToBoxAdapter(child: HomeAppBarSections()),
+          SliverToBoxAdapter(child: HistoricalPeriodsSection()),
+          SliverToBoxAdapter(child: HistoricalCharactersSections()),
+          SliverToBoxAdapter(child: HistoricalSouvenirsSection())
         ],
       ),
     ));

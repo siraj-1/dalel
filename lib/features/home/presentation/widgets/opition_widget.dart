@@ -1,4 +1,4 @@
-import 'package:dalel/features/home/presentation/widgets/historical_periods_item_widget.dart';
+import 'package:dalel/features/home/presentation/widgets/opition_widget_item.dart';
 import 'package:flutter/material.dart';
 
 class HistoricalPeriods extends StatelessWidget {

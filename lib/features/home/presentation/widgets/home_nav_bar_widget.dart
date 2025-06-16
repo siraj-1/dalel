@@ -60,14 +60,3 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
         inactiveIcon: SvgPicture.asset(Assets.maskSvg)),
   ];
 }
-
-class AppAssets {
-  static const String homeSvg = 'assets/images/home.svg';
-  static const String homeNonSvg = 'assets/images/home-non.svg';
-  static const String searchSvg = 'assets/images/search.svg';
-  static const String searchNonSvg = 'assets/images/search-non.svg';
-  static const String maskSvg = 'assets/images/Mask.svg';
-  static const String maskActiveSvg = 'assets/images/Mask-active.svg';
-
-  // Add more as needed
-}
