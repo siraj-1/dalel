@@ -8,7 +8,13 @@ abstract class AppStrings {
   static const next = "Next",
       createAccount = "Create Account",
       loginNow = "Login Now",
-      ancientegyptwars = "Ancient Egypt Wars";
+      aboutView =
+          "Ancient Egypt was a civilization in Northeast Africa situated in the Nile Valley. Ancient Egyptian civilization followed prehistoric Egypt and coalesced around 3100 BC (according to conventional Egyptian chronology) with the ";
+  static const aboutnewpage =
+      "Saladin was the founder of the Ayyubid dynasty and the first sultan of both Egypt and Syria. He is best known for his heroic defense of Islam against the Crusaders, especially his recapture of Jerusalem in 1187 ";
+  static const ancientegyptwars = "Ancient Egypt Wars";
+  static const aboutsaladin = "About Saladin (1137-1193)";
+  static const saladinwars = "Saladin Wars";
   //!Auth Strings
   static const welcome = "Welcome!",
       welcomeBack = "Welcome Back!",

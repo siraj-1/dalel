@@ -1,3 +1,4 @@
+import 'package:dalel/core/functions/CoustomNavigation.dart';
 import 'package:dalel/features/home/presentation/widgets/custom_category_list_view_item.dart';
 import 'package:flutter/material.dart';
 
@@ -6,19 +7,24 @@ class CustomCategoryListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 133,
-      child: ListView.separated(
-        clipBehavior: Clip.none,
-        physics: const BouncingScrollPhysics(),
-        separatorBuilder: (context, index) {
-          return const SizedBox(width: 16);
-        },
-        scrollDirection: Axis.horizontal,
-        itemCount: 6,
-        itemBuilder: (_, index) {
-          return const CustomCategoryListViewItem();
-        },
+    return GestureDetector(
+      onTap: () {
+        customNavigation(context, "/aboutpage");
+      },
+      child: SizedBox(
+        height: 133,
+        child: ListView.separated(
+          clipBehavior: Clip.none,
+          physics: const BouncingScrollPhysics(),
+          separatorBuilder: (context, index) {
+            return const SizedBox(width: 16);
+          },
+          scrollDirection: Axis.horizontal,
+          itemCount: 6,
+          itemBuilder: (_, index) {
+            return const CustomCategoryListViewItem();
+          },
+        ),
       ),
     );
   }

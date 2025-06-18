@@ -43,4 +43,5 @@ class Assets {
   static const String bigpyramid = 'assets/images/bigp.png';
   static const String saleb = 'assets/images/saleb.png';
   static const String vctor = 'assets/images/Vector.png';
+  static const String bigsaladin = 'assets/images/bigsaladi.png';
 }

@@ -1,12 +1,10 @@
 import 'package:dalel/core/utils/app_assets.dart';
 import 'package:dalel/core/utils/app_colors.dart';
-import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/utils/app_text_styles.dart';
-import 'package:dalel/core/widgets/custom_header_text.dart';
 import 'package:flutter/material.dart';
 
-class AboutEgyptSection extends StatelessWidget {
-  const AboutEgyptSection({super.key, required this.text, required this.image});
+class AboutPeople extends StatelessWidget {
+  const AboutPeople({super.key, required this.text, required this.image});
   final String text;
   final String image;
   @override
@@ -14,8 +12,6 @@ class AboutEgyptSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CustomHeaderText(text: AppStrings.aboutAncientEgypt),
-        const SizedBox(height: 47),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -28,17 +24,31 @@ class AboutEgyptSection extends StatelessWidget {
                   child: Image.asset(Assets.pyramid),
                 ),
                 SizedBox(
-                  height: 220,
-                  width: 196,
+                  height: 240,
+                  width: 210,
                   child: Text(
                     text,
                     style: CustomTextStyles.poppins400style20
                         .copyWith(color: AppColors.black, fontSize: 16),
+                    maxLines: 9,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 203, width: 131, child: Image.asset(image)),
+            Stack(
+              children: [
+                Positioned(
+                  left: 45,
+                  top: 50,
+                  child: SizedBox(
+                      height: 199,
+                      width: 119,
+                      child: Image.asset('assets/images/behiedshaladin.png')),
+                ),
+                SizedBox(height: 283, width: 160, child: Image.asset(image)),
+              ],
+            )
           ],
         ),
       ],
