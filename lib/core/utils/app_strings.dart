@@ -4,11 +4,13 @@ abstract class AppStrings {
   static const String appName = "Dalel",
       //!On Boarding Strings
       skip = "Skip",
-      next = "Next",
+      aboutAncientEgypt = "About Ancient Egypt";
+  static const next = "Next",
       createAccount = "Create Account",
       loginNow = "Login Now",
-      //!Auth Strings
-      welcome = "Welcome!",
+      ancientegyptwars = "Ancient Egypt Wars";
+  //!Auth Strings
+  static const welcome = "Welcome!",
       welcomeBack = "Welcome Back!",
       fristName = "First Name",
       lastName = "Last Name",

@@ -12,7 +12,7 @@ class HistoricalPeriodsSection extends StatelessWidget {
       children: [
         CustomHeaderText(text: AppStrings.historicalPeriods),
         SizedBox(height: 16),
-        HistoricalPeriods(),
+        CustomOpitionsWidget(),
         SizedBox(height: 32),
       ],
     );
