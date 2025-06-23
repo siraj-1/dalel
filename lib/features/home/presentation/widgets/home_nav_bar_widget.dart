@@ -3,7 +3,7 @@ import 'package:dalel/core/utils/app_colors.dart';
 import 'package:dalel/features/cart/presintaion/cart_view.dart';
 import 'package:dalel/features/home/presentation/view/home_view.dart';
 import 'package:dalel/features/profile/presintaion/view/profile_view.dart';
-import 'package:dalel/features/search/presintaion/search_view.dart';
+import 'package:dalel/features/search/presintaion/view/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';

@@ -44,4 +44,7 @@ class Assets {
   static const String saleb = 'assets/images/saleb.png';
   static const String vctor = 'assets/images/Vector.png';
   static const String bigsaladin = 'assets/images/bigsaladi.png';
+  static const String backsign = 'assets/images/back.svg';
+  static const String searchIcon = 'assets/images/searchicon.svg';
+  static const String profilePIC = 'assets/images/Picture.png';
 }
